@@ -1,0 +1,84 @@
+.hero {
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 14px 0 6px;
+    font-size: 38px;
+  }
+
+  p {
+    color: #64748b;
+    font-size: 16px;
+  }
+}
+
+.search-card {
+  margin-bottom: 28px;
+}
+
+.loading {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.offer-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  h2 {
+    margin: 0;
+    font-size: 22px;
+  }
+
+  p {
+    margin: 6px 0 0;
+    color: #64748b;
+  }
+}
+
+.price {
+  font-size: 20px;
+  color: #16a34a;
+  white-space: nowrap;
+}
+
+.legs {
+  display: grid;
+  gap: 10px;
+}
+
+.leg {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 12px;
+
+  span {
+    font-weight: 800;
+    color: #2563eb;
+  }
+
+  p {
+    margin: 4px 0;
+  }
+
+  small {
+    color: #64748b;
+  }
+}
+
+.details-link {
+  margin-top: auto;
+}

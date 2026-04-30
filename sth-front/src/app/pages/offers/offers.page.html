@@ -1,0 +1,70 @@
+<section class="page">
+  <div class="hero">
+    <div>
+      <span class="badge">MongoDB + Redis Cache</span>
+      <h1>Recherche d’offres</h1>
+      <p>Recherche par trajet, tri par prix, cache Redis TTL 60 secondes.</p>
+    </div>
+  </div>
+
+  <div class="card search-card">
+    <div class="form-grid">
+      <div class="field">
+        <label>Départ</label>
+        <input [(ngModel)]="from" placeholder="PAR" />
+      </div>
+
+      <div class="field">
+        <label>Arrivée</label>
+        <input [(ngModel)]="to" placeholder="TYO" />
+      </div>
+
+      <div class="field">
+        <label>Limite</label>
+        <input type="number" [(ngModel)]="limit" />
+      </div>
+
+      <div class="field">
+        <label>Recherche texte</label>
+        <input [(ngModel)]="q" placeholder="hotel, AirZen..." />
+      </div>
+
+      <button (click)="search()">Rechercher</button>
+    </div>
+  </div>
+
+  @if (loading) {
+  <p class="loading">Chargement des offres...</p>
+  } @if (error) {
+  <p class="error">{{ error }}</p>
+  }
+
+  <div class="offers-grid">
+    @for (offer of offers; track offer.id) {
+    <article class="card offer-card">
+      <div class="offer-header">
+        <div>
+          <h2>{{ offer.provider }}</h2>
+          <p>{{ offer.from }} → {{ offer.to }}</p>
+        </div>
+
+        <strong class="price">{{ offer.price }} {{ offer.currency }}</strong>
+      </div>
+
+      <div class="legs">
+        @for (leg of offer.legs; track leg.flightNum) {
+        <div class="leg">
+          <span>{{ leg.flightNum }}</span>
+          <p>{{ leg.dep }} → {{ leg.arr }}</p>
+          <small>{{ leg.duration }}</small>
+        </div>
+        }
+      </div>
+
+      <a class="details-link" [routerLink]="['/offers', offer.id]">
+        Voir les détails →
+      </a>
+    </article>
+    }
+  </div>
+</section>

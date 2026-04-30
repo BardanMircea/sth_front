@@ -1,0 +1,58 @@
+.app-header {
+  min-height: 76px;
+  padding: 16px 32px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  p {
+    margin: 2px 0 0;
+    color: #64748b;
+    font-size: 13px;
+  }
+}
+
+.logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+}
+
+nav a {
+  color: #334155;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+main {
+  min-height: calc(100vh - 76px);
+}

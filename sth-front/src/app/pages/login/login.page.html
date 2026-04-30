@@ -1,0 +1,28 @@
+<section class="page login-page">
+  <div class="card login-card">
+    <span class="badge">Redis Session</span>
+
+    <h1>Connexion</h1>
+    <p class="subtitle">
+      Simule une authentification et crée une session Redis avec TTL 900
+      secondes.
+    </p>
+
+    <div class="field">
+      <label>User ID</label>
+      <input [(ngModel)]="userId" placeholder="u42" />
+    </div>
+
+    <button (click)="login()">Créer une session</button>
+
+    @if (response) {
+    <div class="success result">
+      <strong>Session créée</strong>
+      <p>Token : {{ response.token }}</p>
+      <p>Expire dans : {{ response.expires_in }} secondes</p>
+    </div>
+    } @if (error) {
+    <p class="error">{{ error }}</p>
+    }
+  </div>
+</section>

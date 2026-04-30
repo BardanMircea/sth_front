@@ -1,0 +1,65 @@
+<section class="page">
+  <a routerLink="/offers">← Retour aux offres</a>
+
+  @if (loading) {
+  <p class="loading">Chargement...</p>
+  } @if (error) {
+  <p class="error">{{ error }}</p>
+  } @if (data) {
+  <div class="details-layout">
+    <article class="card main-card">
+      <span class="badge">Détail MongoDB + Redis</span>
+
+      <h1>{{ data.offer.provider }}</h1>
+      <p class="route">{{ data.offer.from }} → {{ data.offer.to }}</p>
+
+      <div class="price-line">
+        <strong>{{ data.offer.price }} {{ data.offer.currency }}</strong>
+        <span>{{ data.offer.departDate }} → {{ data.offer.returnDate }}</span>
+      </div>
+
+      <h3>Vols</h3>
+      <div class="legs">
+        @for (leg of data.offer.legs; track leg.flightNum) {
+        <div class="leg">
+          <strong>{{ leg.flightNum }}</strong>
+          <p>{{ leg.dep }} → {{ leg.arr }}</p>
+          <small>{{ leg.duration }}</small>
+        </div>
+        }
+      </div>
+
+      @if (data.offer.hotel) {
+      <h3>Hôtel</h3>
+      <div class="info-box">
+        <strong>{{ data.offer.hotel.name }}</strong>
+        <p>
+          {{ data.offer.hotel.nights }} nuits — {{ data.offer.hotel.price }} €
+        </p>
+      </div>
+      } @if (data.offer.activity) {
+      <h3>Activité</h3>
+      <div class="info-box">
+        <strong>{{ data.offer.activity.title }}</strong>
+        <p>{{ data.offer.activity.price }} €</p>
+      </div>
+      }
+    </article>
+
+    <aside class="card side-card">
+      <span class="badge">Neo4j</span>
+      <h2>Villes proches</h2>
+
+      @if (data.relatedOffers.length > 0) {
+      <ul>
+        @for (city of data.relatedOffers; track city) {
+        <li>{{ city }}</li>
+        }
+      </ul>
+      } @else {
+      <p>Aucune ville associée.</p>
+      }
+    </aside>
+  </div>
+  }
+</section>

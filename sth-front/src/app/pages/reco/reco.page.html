@@ -1,0 +1,39 @@
+<section class="page">
+  <div class="hero">
+    <span class="badge">Neo4j Graph</span>
+    <h1>Recommandations</h1>
+    <p>Recommande les villes proches selon le poids des relations NEAR.</p>
+  </div>
+
+  <div class="card reco-form">
+    <div class="form-grid">
+      <div class="field">
+        <label>Ville</label>
+        <input [(ngModel)]="city" placeholder="PAR" />
+      </div>
+
+      <div class="field">
+        <label>Nombre</label>
+        <input type="number" [(ngModel)]="k" />
+      </div>
+
+      <button (click)="search()">Recommander</button>
+    </div>
+  </div>
+
+  @if (loading) {
+  <p class="loading">Recherche dans le graphe...</p>
+  } @if (error) {
+  <p class="error">{{ error }}</p>
+  }
+
+  <div class="reco-grid">
+    @for (reco of recommendations; track reco.city) {
+    <article class="card reco-card">
+      <span class="city">{{ reco.city }}</span>
+      <p>Score de pertinence</p>
+      <strong>{{ reco.score }}</strong>
+    </article>
+    }
+  </div>
+</section>
